@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md. Tahsinul Sifat — Embedded Systems &amp; Edge AI</title>
+<meta name="description" content="EEE undergraduate at Daffodil International University. Embedded systems, edge machine learning, PCB design. Solar PV monitoring, spiking neural networks, Bangla NLP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EFE7;
+  --paper-2:#E9E5DA;
+  --ink:#14181E;
+  --ink-soft:#4A5159;
+  --rule:#C6BFAF;
+  --rule-soft:#D9D3C5;
+  --signal:#C8410A;
+  --blueprint:#1B4A80;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(var(--rule-soft) 1px,transparent 1px),
+    linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);
+  background-size:64px 64px;
+  background-position:-1px -1px;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(242,239,231,0) 30%,rgba(242,239,231,.92) 100%);
+}
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}}
+
+/* ---------- header ---------- */
+header{padding:72px 0 0}
+.partno{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--signal);display:flex;gap:14px;flex-wrap:wrap;align-items:center;
+}
+.partno span:not(:last-child)::after{content:"";display:inline-block;width:1px;height:10px;background:var(--rule);margin-left:14px;vertical-align:-1px}
+h1{
+  font-family:var(--serif);font-weight:400;font-size:clamp(46px,8.4vw,94px);
+  line-height:.96;letter-spacing:-.02em;margin:22px 0 0;
+}
+.disc{
+  font-family:var(--mono);font-size:clamp(11px,1.5vw,14px);font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--blueprint);
+  margin-top:22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+}
+.disc i{display:block;width:5px;height:5px;background:var(--signal);transform:rotate(45deg)}
+.tagline{
+  font-family:var(--mono);font-size:14px;color:var(--ink-soft);
+  margin-top:20px;max-width:46ch;line-height:1.7;
+}
+.rule{height:1px;background:var(--rule);margin:44px 0 0;position:relative}
+.rule::after{content:"";position:absolute;left:0;top:0;width:88px;height:3px;background:var(--signal);transform:translateY(-1px)}
+
+/* ---------- contact strip ---------- */
+.strip{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--rule)}
+.strip a,.strip .cell{
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+  padding:16px 22px 16px 0;margin-right:22px;color:var(--ink-soft);
+  text-decoration:none;border-bottom:2px solid transparent;transition:color .18s,border-color .18s;
+}
+.strip a:hover{color:var(--signal);border-bottom-color:var(--signal)}
+.strip a::before{content:"↗ ";color:var(--rule)}
+
+/* ---------- sections ---------- */
+section{padding:64px 0;border-bottom:1px solid var(--rule-soft)}
+.shead{display:flex;align-items:baseline;gap:18px;margin-bottom:34px}
+.snum{font-family:var(--mono);font-size:11px;color:var(--signal);letter-spacing:.14em}
+.shead h2{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.shead .fill{flex:1;height:1px;background:var(--rule-soft)}
+
+.lede{font-family:var(--serif);font-size:clamp(22px,2.8vw,31px);line-height:1.34;max-width:26ch;letter-spacing:-.01em}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.two p+p{margin-top:15px}
+.two p{color:var(--ink-soft);max-width:60ch}
+.two strong{color:var(--ink);font-weight:600}
+
+/* ---------- projects ---------- */
+.proj{border-top:1px solid var(--rule-soft);padding:32px 0;display:grid;grid-template-columns:104px minmax(0,1fr);gap:28px}
+.proj:first-of-type{border-top:none;padding-top:0}
+.proj .idx{font-family:var(--mono);font-size:11px;color:var(--ink-soft);letter-spacing:.1em;padding-top:7px}
+.proj h3{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.15;letter-spacing:-.01em}
+.proj h3 a{color:inherit;text-decoration:none;background-image:linear-gradient(var(--signal),var(--signal));background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .3s ease,color .2s}
+.proj h3 a:hover{color:var(--signal);background-size:100% 1px}
+.proj .meta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--signal);text-transform:uppercase;margin-top:9px}
+.proj p{color:var(--ink-soft);margin-top:13px;max-width:62ch}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;padding:3px 9px;border:1px solid var(--rule);color:var(--ink-soft);background:rgba(255,255,255,.35)}
+
+.featured{background:rgba(255,255,255,.42);border:1px solid var(--rule);padding:32px;margin-bottom:8px;grid-template-columns:104px minmax(0,1fr)}
+.featured .idx{color:var(--signal)}
+
+table{border-collapse:collapse;width:100%;margin-top:22px;font-family:var(--mono);font-size:12px}
+caption{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:9px}
+th,td{text-align:right;padding:8px 12px;border-bottom:1px solid var(--rule-soft)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+td:last-child,th:last-child{padding-right:0}
+thead th{font-weight:500;color:var(--ink-soft);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--rule)}
+tbody tr.best td{color:var(--ink);font-weight:600}
+tbody tr.base td{color:var(--ink-soft)}
+.note{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:16px;max-width:62ch;border-left:2px solid var(--rule);padding-left:15px}
+
+/* ---------- capability grid ---------- */
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1px;background:var(--rule-soft);border:1px solid var(--rule-soft)}
+.cap{background:var(--paper);padding:22px}
+.cap h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);font-weight:600;margin-bottom:11px}
+.cap p{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+
+/* ---------- list ---------- */
+.dist{list-style:none;border-top:1px solid var(--rule-soft)}
+.dist li{border-bottom:1px solid var(--rule-soft);padding:15px 0;display:grid;grid-template-columns:104px minmax(0,1fr);gap:28px;align-items:baseline}
+.dist .yr{font-family:var(--mono);font-size:11px;color:var(--ink-soft);letter-spacing:.08em}
+.dist b{font-weight:600}
+.dist span.d{color:var(--ink-soft)}
+
+/* ---------- footer ---------- */
+footer{padding:52px 0 72px}
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);font-family:var(--mono);font-size:11px}
+.rev div{background:var(--paper);padding:13px 15px}
+.rev dt{color:var(--ink-soft);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+.rev dd{color:var(--ink)}
+.rev a{color:var(--signal);text-decoration:none}
+.rev a:hover{text-decoration:underline}
+
+@media(max-width:760px){
+  header{padding-top:48px}
+  .two{grid-template-columns:1fr;gap:26px}
+  .proj,.dist li{grid-template-columns:1fr;gap:8px}
+  .featured{padding:24px}
+  .proj .idx,.dist .yr{padding-top:0}
+  body{background-size:44px 44px}
+  table{font-size:11px}
+  th,td{padding:7px 7px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="partno rv" style="animation-delay:.05s">
+    <span>B.Sc. EEE · Level 4</span>
+    <span>Daffodil Int'l University</span>
+    <span>Dhaka, BD</span>
+  </div>
+  <h1 class="rv" style="animation-delay:.14s">Md. Tahsinul<br>Sifat</h1>
+  <div class="disc rv" style="animation-delay:.24s">
+    <span>Embedded systems</span><i></i><span>Edge AI</span><i></i><span>PCB design</span>
+  </div>
+  <p class="tagline rv" style="animation-delay:.32s">
+    I build sensor nodes that collect their own data — and models small enough
+    to run on the microcontroller collecting it.
+  </p>
+  <div class="rule rv" style="animation-delay:.40s"></div>
+  <nav class="strip rv" style="animation-delay:.48s">
+    <a href="https://github.com/sifat-lab">GitHub</a>
+    <a href="https://www.linkedin.com/in/md-tahsinul-sifat-959269407">LinkedIn</a>
+    <a href="mailto:sifat2305131213@diu.edu.bd">Email</a>
+  </nav>
+</header>
+
+<section>
+  <div class="shead"><span class="snum">01</span><h2>Overview</h2><span class="fill"></span></div>
+  <div class="two">
+    <p class="lede">I came into machine learning through a circuit-theory question, and kept the circuits.</p>
+    <div>
+      <p>I'm a fourth-year Electrical &amp; Electronic Engineering undergraduate at Daffodil
+      International University. Most of what I build spans the whole path from
+      <strong>schematic to PCB to firmware to data to model</strong> — because the interesting
+      constraints only show up when you own all of it.</p>
+      <p>My current focus is <strong>energy-efficient inference at the edge</strong>: spiking and
+      recurrent networks small enough to run on an ESP32 or STM32, applied to solar power
+      forecasting and always-on audio. I also work on Bangla-language NLP for health applications.</p>
+      <p>What I actually enjoy is the debugging — the SD card that only fails on the 5&nbsp;V rail,
+      the breadboard contact resistance that quietly costs you three days of data. Hardware
+      teaches you fast that a design isn't finished until it has survived a week outdoors.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">02</span><h2>Selected Work</h2><span class="fill"></span></div>
+
+  <article class="proj featured">
+    <div class="idx">2026 —<br>ONGOING</div>
+    <div>
+      <h3><a href="https://github.com/sifat-lab/ML-powered_renewabl_-energy">SpikeSoil</a></h3>
+      <div class="meta">Solar PV monitoring &amp; forecasting edge node</div>
+      <p>An ESP32-S3 data-acquisition node — dual INA219 current/voltage sensors, BH1750
+      irradiance, DS18B20 panel temperature — logging to SD card every five seconds with
+      sync-per-write and retry logic. Rooftop-validated on 3&nbsp;W panels under resistive load.
+      Paired with forecasters under 5,000 parameters, small enough to run on the same
+      microcontroller that collects the data.</p>
+
+      <table>
+        <caption>Forecast error, DKASC dataset (5-min resolution, 1-hour window)</caption>
+        <thead><tr><th>Model</th><th>Params</th><th>15 min</th><th>30 min</th><th>60 min</th></tr></thead>
+        <tbody>
+          <tr class="base"><td>Persistence baseline</td><td>—</td><td>0.111</td><td>0.156</td><td>0.241</td></tr>
+          <tr class="best"><td>GRU</td><td>4,035</td><td>0.058</td><td>0.063</td><td>0.073</td></tr>
+          <tr class="best"><td>SNN (snnTorch)</td><td>4,867</td><td>0.066</td><td>0.070</td><td>0.076</td></tr>
+        </tbody>
+      </table>
+
+      <p class="note">The spiking network gives up roughly 12% of the GRU's short-horizon accuracy
+      and matches it by 60 minutes, while firing on only 13% of timesteps. Energy per inference
+      on real hardware hasn't been measured yet — until it is, that efficiency claim is an
+      argument from operation count, not a measurement.</p>
+
+      <div class="tags"><span class="tag">ESP32-S3</span><span class="tag">snnTorch</span><span class="tag">PyTorch</span><span class="tag">PlatformIO</span><span class="tag">I²C / SPI / 1-Wire</span></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="idx">2026</div>
+    <div>
+      <h3><a href="https://github.com/sifat-lab/DengueShield_BD">DengueShield BD</a></h3>
+      <div class="meta">Bangla-language clinical triage + outbreak forecasting</div>
+      <p>A two-model system for dengue response in Bangladesh: a fine-tuned BanglaBERT classifier
+      that triages symptom descriptions written in Bangla, and an XGBoost model forecasting
+      next-7-day case counts across nine divisions. Prepared for demonstration at IEEE ICADHI 2026.</p>
+      <p><strong>85.0%</strong> accuracy on a hand-built adversarial test set (severe-class recall 0.80);
+      outbreak MAE <strong>5.36</strong> on 5,181 DGHS records validated with a chronological hold-out
+      split. The synthetic split scored near 100% — a memorisation artifact, which is why it isn't
+      the headline number.</p>
+      <div class="tags"><span class="tag">BanglaBERT</span><span class="tag">XGBoost</span><span class="tag">Transformers</span><span class="tag">Streamlit</span></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="idx">2026</div>
+    <div>
+      <h3><a href="https://github.com/sifat-lab/three_phase">Office Monitor</a></h3>
+      <div class="meta">Real-time IoT monitoring — IUT Techathon 2026</div>
+      <p>Fifteen devices across three rooms, monitored through a live WebSocket dashboard and a
+      Discord bot reading from one shared FastAPI backend. Power accumulation, alert rules for
+      out-of-hours usage, and a top-view office layout where lights glow and fans spin. Built
+      end-to-end in a single competition day.</p>
+      <div class="tags"><span class="tag">FastAPI</span><span class="tag">WebSocket</span><span class="tag">ESP32</span><span class="tag">Wokwi</span></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="idx">2025 —<br>2026</div>
+    <div>
+      <h3>Keyword spotting on STM32 — ANN vs. SNN</h3>
+      <div class="meta">Research · write-up in progress</div>
+      <p>A matched-parameter benchmark on Google Speech Commands: roughly 23,000 parameters each,
+      <strong>92.0%</strong> for the dense network against <strong>86.0%</strong> for the spiking one
+      at a 22% spike rate. The point is to quantify exactly what accuracy you trade for sparsity
+      inside the 128&nbsp;KB RAM budget of an STM32F411.</p>
+      <div class="tags"><span class="tag">STM32F411</span><span class="tag">snnTorch</span><span class="tag">TinyML</span></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="idx">2025</div>
+    <div>
+      <h3>Line Follower Robot</h3>
+      <div class="meta">PID firmware + custom PCB</div>
+      <p>Complete PID control firmware on an STM32 Blue Pill with a QTR-8A reflectance array and
+      TB6612FNG motor driver, plus a full custom board designed in KiCad. Competed in the Line
+      Follower segment at Innoverse Bangladesh 2025, BUET.</p>
+      <div class="tags"><span class="tag">STM32</span><span class="tag">KiCad</span><span class="tag">C</span><span class="tag">PID</span></div>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div class="idx">2026 —<br>ONGOING</div>
+    <div>
+      <h3>SeeSound</h3>
+      <div class="meta">Optical microphone · final-year capstone</div>
+      <p>Recovering audio from video and light reflections of vibrating surfaces, comparing capture
+      paths — high-speed camera, photodiode, event camera — with deep-learning reconstruction as
+      the contribution. Targeting IEEE ICCIT / TENSYMP.</p>
+      <div class="tags"><span class="tag">Signal processing</span><span class="tag">PyTorch</span><span class="tag">Optics</span></div>
+    </div>
+  </article>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">03</span><h2>Capabilities</h2><span class="fill"></span></div>
+  <div class="caps">
+    <div class="cap"><h4>Embedded / IoT</h4><p>ESP32 &amp; ESP32-S3, STM32 (F1/F4), Arduino, Raspberry Pi, PlatformIO. Sensor integration over I²C, SPI and 1-Wire; SD logging, Wi-Fi/NTP, field-hardened firmware.</p></div>
+    <div class="cap"><h4>Hardware design</h4><p>KiCad — schematic capture through PCB layout and fabrication files. Proteus simulation. Prototyping, soldering, and bring-up debugging.</p></div>
+    <div class="cap"><h4>Machine learning</h4><p>PyTorch, snnTorch, Hugging Face Transformers, XGBoost, scikit-learn. Time-series forecasting, TinyML and edge deployment, spiking networks.</p></div>
+    <div class="cap"><h4>Data &amp; backend</h4><p>Python with NumPy, pandas, Matplotlib and Seaborn. FastAPI and WebSocket services. Git, Jupyter, Google Colab.</p></div>
+    <div class="cap"><h4>Languages</h4><p>C, Python, MATLAB. Bangla (native), English (professional working proficiency).</p></div>
+    <div class="cap"><h4>Domains</h4><p>Renewable energy monitoring, neuromorphic computing, Bangla NLP, control systems, power electronics.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">04</span><h2>Distinctions</h2><span class="fill"></span></div>
+  <ul class="dist">
+    <li><span class="yr">2026</span><span><b>Grameenphone Idea Competition</b> <span class="d">— advanced through the final selection rounds among 850+ participants.</span></span></li>
+    <li><span class="yr">2026</span><span><b>IUT Techathon</b> <span class="d">— built and demonstrated a complete IoT monitoring system within the event.</span></span></li>
+    <li><span class="yr">2026</span><span><b>AI HealthCare Competition</b> <span class="d">— competed with DengueShield BD.</span></span></li>
+    <li><span class="yr">2025</span><span><b>Innoverse Bangladesh</b> <span class="d">— National Science &amp; Technology Carnival, BUET. Line Follower Robot segment.</span></span></li>
+    <li><span class="yr">2025</span><span><b>National AI Olympiad</b> <span class="d">— participant.</span></span></li>
+    <li><span class="yr">—</span><span><b>Machine Learning Specialization</b> <span class="d">— Andrew Ng, DeepLearning.AI / Stanford Online.</span></span></li>
+  </ul>
+</section>
+
+<footer>
+  <dl class="rev">
+    <div><dt>Name</dt><dd>Md. Tahsinul Sifat</dd></div>
+    <div><dt>Institution</dt><dd>Daffodil Int'l University</dd></div>
+    <div><dt>Programme</dt><dd>B.Sc. EEE · Level 4</dd></div>
+    <div><dt>Location</dt><dd>Savar, Dhaka, BD</dd></div>
+    <div><dt>Email</dt><dd><a href="mailto:sifat2305131213@diu.edu.bd">sifat2305131213@diu.edu.bd</a></dd></div>
+    <div><dt>Code</dt><dd><a href="https://github.com/sifat-lab">github.com/sifat-lab</a></dd></div>
+  </dl>
+</footer>
+
+</div>
+</body>
+</html>
